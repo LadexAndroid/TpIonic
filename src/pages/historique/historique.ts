@@ -18,21 +18,21 @@ import { Storage } from '@ionic/storage';
 export class HistoriquePage {
   value: string = null;
   items: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public historyservice: HistoriqueProvider, public listfavs: Storage, private socialSharing :SocialSharing) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public historyservice: HistoriqueProvider, public listfavs: Storage, private socialSharing: SocialSharing) {
     this.findListOfFavs();
   }
 
   ionViewDidLoad() {
 
   }
- 
-  Share(text : string){
+
+  Share(text: string) {
     this.socialSharing.share(text)
-    .then(()=>{
+      .then(() => {
 
-    }).catch(()=>{
+      }).catch(() => {
 
-    });
+      });
 
   }
 
@@ -40,10 +40,10 @@ export class HistoriquePage {
     let arr = [];
     this.listfavs.get('History').then(data => {
       data.forEach(element => {
-       
-      
-          arr.push(JSON.stringify(element));
-        
+
+
+        arr.push(JSON.stringify(element));
+
       });
       this.items = arr;
     });
